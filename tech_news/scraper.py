@@ -1,5 +1,6 @@
 import requests
 import time
+from parsel import Selector
 
 
 # Requisito 1
@@ -16,12 +17,15 @@ def fetch(url, timeout=3):
     except requests.HTTPError:
         return 'Instabilidade no serviço'
     except requests.ReadTimeout:
+        print('De castigo?')
         return None
 
 
 # Requisito 2
 def scrape_novidades(html_content):
-    """Seu código deve vir aqui"""
+    selector = Selector(html_content)
+    links_urls_noticias = selector.css("h2.entry-title a::attr(href)").getall()
+    return links_urls_noticias
 
 
 # Requisito 3
@@ -37,11 +41,3 @@ def scrape_noticia(html_content):
 # Requisito 5
 def get_tech_news(amount):
     """Seu código deve vir aqui"""
-
-
-# if __name__ == "__main__":
-#     # page_content = fetch(
-#     #     'https://altoalegredomaranhao.ma.gov.br/transparencia/licitacoes'
-#     #     )
-#     fetch('http://httpbin.org/delay/10')
-#     # print(page_content.status_code)
