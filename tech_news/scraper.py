@@ -86,7 +86,7 @@ def get_tech_news(amount):
             # função fetch e guardar o conteudo da pagina em
             # content_atual_loop
             content_atual_loop = fetch(url)
-            # Nesse pronto irei pegar o conteudo de cada pagina 
+            # Nesse pronto irei pegar o conteudo de cada pagina
             # conforme link capturado pelo laço em urls e passar
             # esse conteúdo como argumento para a função scrap_noticia
             # que irá organizar as informações em um dicionário já customizado
@@ -99,7 +99,7 @@ def get_tech_news(amount):
         # e o ciclo continua pois ainda estou em while
         url_default = next
     # na saída de while eu salvo a minha lista personalizada
-    # com a função create_news do módulo database e adiciono 
+    # com a função create_news do módulo database e adiciono
     # no meu banco mongo db
     create_news(list)
     # retorno a lista
@@ -124,13 +124,3 @@ def get_tech_news(amount):
 #     # -----------------------------
 #     # result = scrape_next_page_link(page)
 #     # print(result)
-
-# #     page_content = fetch(
-# #         'https://blog.betrybe.com/carreira/gestao-do-tempo-dicas-essencias/'
-# #         )
-# #     # pagina que contem tag
-# #     # page_content = fetch(
-# #     #     """https://blog.betrybe.com/noticias/orkut-voltou-o-que-se-sabe-ate-agora-sobre-o-retorno/"""
-# #     #     )
-# #     # # print(page_content)
-# #     scrape_noticia(page_content)
