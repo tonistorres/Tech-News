@@ -1,3 +1,4 @@
+# Requesito 6
 from tech_news.analyzer.search_engine import (
     search_by_title,
     search_by_date,
