@@ -39,11 +39,11 @@ def search_by_date(date):
         # criando array com conteúdos filtrado do banco
         content_filter = []
         # percorrer data_content que possui o conteúdo filtrado
-        # pela função search_nwes que recebeu por parâmetro uma 
+        # pela função search_nwes que recebeu por parâmetro uma
         # data filtrada
         for new in data_content:
             # montando minha forma de tupla para ser lançada no array
-            # para isso pegando a value title e url de data_content 
+            # para isso pegando a value title e url de data_content
             date_format_tuple = (new['title'], new['url'])
             # adicionando minha tupla montanda ao array content_filter
             content_filter.append(date_format_tuple)
@@ -53,8 +53,16 @@ def search_by_date(date):
 
 
 # Requisito 8
+# função busca noticias passando a tag como argumento
 def search_by_tag(tag):
-    """Seu código deve vir aqui"""
+    # nesse ponto data_search recebe o retorno da função search_news
+    # que recebe uma query para pesquisa com um regex que ignora case sensitive
+    data_search = search_news({"tags": {"$regex": tag, "$options": "i"}})
+    # aqqui vou montar minha estrutura de tuplas percorrendo os dados
+    # contidos em data_search
+    tag_tuple = [(new["title"], new["url"]) for new in data_search]
+    # retornando a tupla
+    return tag_tuple
 
 
 # Requisito 9
