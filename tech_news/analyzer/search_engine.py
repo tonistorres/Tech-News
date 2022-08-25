@@ -66,8 +66,13 @@ def search_by_tag(tag):
 
 
 # Requisito 9
+# função busca por categoria e segue a mesma lógica da anterior
 def search_by_category(category):
-    """Seu código deve vir aqui"""
+    data_search = search_news(
+        {"category": {"$regex": category, "$options": "i"}})
+    tag_tuple = [(new["title"], new["url"]) for new in data_search]
+
+    return tag_tuple
 
 
 # if __name__ == "__main__":
